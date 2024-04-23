@@ -1,4 +1,4 @@
-module github.com/francistm/soap-server
+module github.com/io1o/soap-server
 
 go 1.18
 
