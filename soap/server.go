@@ -56,7 +56,7 @@ func (s *Service) AddPort(name string, p *Port) {
 	s.ports[name] = p
 }
 
-func (s *Service) cacheActions() {
+func (s *Service) CacheActions() {
 	for portName, port := range s.ports {
 		for actionName, action := range port.actions {
 			requestName := fmt.Sprintf("%s%s", portName, actionName)
@@ -66,8 +66,6 @@ func (s *Service) cacheActions() {
 }
 
 func (s *Service) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.cacheActions()
-
 	switch r.Method {
 	case http.MethodPost:
 		s.executeAction(w, r)
